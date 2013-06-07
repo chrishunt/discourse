@@ -13,38 +13,38 @@ dump.rdb
 .sass-cache/*
 
 # Ignore bundler config
-/bin
-/.bundle
-/.vagrant
-/.vagrantfile
-/cache
-/coverage/*
+bin
+.bundle
+.vagrant
+.vagrantfile
+cache
+coverage/*
 
-/public/assets/*
+public/assets/*
 
 config/database.yml
 config/redis.yml
 config/discourse.pill
 
 # Ignore the default SQLite database and db dumps
-/db/*.sqlite3
-/dbs/*.sql
-/dbs/*.sql.gz
-/db/structure.sql
+db/*.sqlite3
+dbs/*.sql
+dbs/*.sql.gz
+db/structure.sql
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
-/logfile
+log/*.log
+tmp
+logfile
 
 # Ignore Eclipse .project file
-/.project
+.project
 
 # Ignore Eclipse .buildpath file
-/.buildpath
+.buildpath
 
 # Ignore RubyMine settings
-/.idea
+.idea
 
 # Ignore gem that is copied in
 MiniProfiler/Ruby/rack-mini-profiler-2.0.1a.gem
@@ -62,10 +62,10 @@ config/multisite.yml
 config/multisite1.yml
 config/fog_credentials.yml
 
-/public/uploads
-/public/stylesheet-cache/*
-/public/downloads
-/public/images
+public/uploads
+public/stylesheet-cache/*
+public/downloads
+public/images
 
 # Scripts used for downloading/refreshing db
 script/download_db
