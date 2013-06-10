@@ -388,8 +388,6 @@ class Topic < ActiveRecord::Base
       # Success is whether the invite was created
       return invite_by_email(invited_by, username_or_email).present?
     end
-
-    false
   end
 
   # Invite a user by email and return the invite. Return the previously existing invite
