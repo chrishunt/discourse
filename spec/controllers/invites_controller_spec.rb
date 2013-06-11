@@ -2,6 +2,47 @@ require 'spec_helper'
 
 describe InvitesController do
 
+  describe '#create' do
+    let(:invited_by_id) { '10' }
+    let(:email) { 'bob@example.com' }
+    let(:params) {{ 'email' => email, 'invited_by_id' => invited_by_id }}
+
+    context 'when logged out' do
+      it 'does nothing' do
+        expect{ post :create, params }.to raise_error Discourse::NotLoggedIn
+      end
+    end
+
+    context 'when logged in' do
+      before { log_in }
+
+      it 'creates an invite' do
+        Invite.expects(:create!).with(params)
+        post :create, params
+      end
+
+      context 'when missing an email' do
+        let(:email) { nil }
+
+        it 'does not create an invite' do
+          expect{
+            post :create, params
+          }.to raise_error ActionController::ParameterMissing
+        end
+      end
+
+      context 'when missing a user id' do
+        let(:invited_by_id) { nil }
+
+        it 'does not create an invite' do
+          expect{
+            post :create, params
+          }.to raise_error ActionController::ParameterMissing
+        end
+      end
+    end
+  end
+
   context '.destroy' do
 
     it 'requires you to be logged in' do

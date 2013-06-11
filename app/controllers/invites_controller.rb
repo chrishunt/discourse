@@ -3,7 +3,12 @@ class InvitesController < ApplicationController
   skip_before_filter :check_xhr, :check_restricted_access
   skip_before_filter :redirect_to_login_if_required
 
-  before_filter :ensure_logged_in, only: [:destroy]
+  before_filter :ensure_logged_in, only: [:create, :destroy]
+
+  def create
+    invite = Invite.create!(create_params)
+    render nothing: true
+  end
 
   def show
     invite = Invite.where(invite_key: params[:id]).first
@@ -40,4 +45,11 @@ class InvitesController < ApplicationController
     render nothing: true
   end
 
+  private
+
+  def create_params
+    params.require(:email)
+    params.require(:invited_by_id)
+    params.permit(:email, :invited_by_id)
+  end
 end
